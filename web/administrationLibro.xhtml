@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Administracion Libro</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            idLibro: <h:inputText value="#{libroBean.idLibro}"></h:inputText>
+            nombres: <h:inputText value="#{libroBean.nombres}"></h:inputText>
+            autor: <h:inputText value="#{libroBean.autor}"></h:inputText>
+            editorial: <h:inputText value="#{libroBean.editorial}"></h:inputText>
+            publicacion: <h:inputText value="#{libroBean.publicacion}"></h:inputText>
+            <h:commandButton value="Registrar" action="#{libroBean.addLibro}"></h:commandButton>
+            <h:commandButton value="Buscar" action="#{libroBean.returnLibroById}"></h:commandButton>
+            <h:commandButton value="Modificar Usuario" action="#{libroBean.updateLibro}"></h:commandButton>
+        </h:form>
+    </h:body>
+</html>
+

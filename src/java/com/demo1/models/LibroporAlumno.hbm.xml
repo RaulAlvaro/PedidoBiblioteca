@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 27/04/2018 10:15:28 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.demo1.models.LibroporAlumno" table="LibroporAlumno" catalog="bibliotecabd" optimistic-lock="version">
+        <id name="idLibroporAlumno" type="int">
+            <column name="idLibroporAlumno" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="alumno" class="com.demo1.models.Alumno" fetch="select">
+            <column name="Alumno_codigo" not-null="true" />
+        </many-to-one>
+        <many-to-one name="libro" class="com.demo1.models.Libro" fetch="select">
+            <column name="Libro_idLibro" not-null="true" />
+        </many-to-one>
+        <many-to-one name="usuario" class="com.demo1.models.Usuario" fetch="select">
+            <column name="Usuario_idUsuario" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

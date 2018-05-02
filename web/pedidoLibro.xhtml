@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Pedido Libro</title>
+    </h:head>
+    <h:body>
+        <div align="center" >
+                <h:form id="form1">
+                    <p:growl id="growl1" showDetail="true" sticky="false"/>
+                    <p:panel style="margin-top:2%;width: 60%;">
+                        <f:facet name="header">
+                            <p:row>
+                                <p:column colspan="6">
+                                    <h:outputText value="Registrar Pedido de Libro" style="font-size: 15px;text-decoration: underline"/>
+                                </p:column>
+                            </p:row>
+                        </f:facet>
+                        <p:panelGrid  id="panelinfoemp" styleClass="companyHeaderGrid" style="margin-top:5px; margin-left: 15px">     
+                            <p:row>
+                                <p:column style="text-align: right">                                                                                                                 
+                                    <p:outputLabel value="Ingrese el codigo Alumno :" for="codAlu1" style="font-family: arial;font-size: 11px"/>                                        
+                                </p:column>    
+                                <p:column>                                        
+                                    <p:inputText size="10" maxlength="8" id="codAlu1" value="#{pedidoLibroBean.idAlumno}" style="font-family: arial;font-size: 11px"/>                                    
+                                </p:column>
+                            </p:row>          
+                        </p:panelGrid>
+                    </p:panel>
+                <!--
+                </h:form>
+                    
+                <h:form id="frmListaTCargo">-->
+                    <p:growl id="growl" showDetail="true" sticky="false"/>
+                    <p:panel style="width: 550px" id="paneltable">
+                        <p:dataTable rowKey="#{item.idLibro}" id="tablaListaTEmpresa" var="item" value="#{libroBean.listalibros}" scrollable="true" scrollHeight="150"  
+                                     style="width: 520px" selection="#{libroBean.mlibro}" selectionMode="single" filteredValue="#{libroBean.listaLibroFiltrados}"
+                                     emptyMessage="No se encontro información">
+                            <p:ajax event="rowSelect" listener="#{mantCargoMBR.cargarCombos()}" />
+                            <p:column headerText="ID" style="text-align: center;font-family: arial;font-size: 9px;width: 3%" filterBy="#{item.idLibro}" filterStyle="width: 35%">
+                                <h:outputText value="#{item.idLibro}"/>
+                            </p:column>
+
+                            <p:column headerText="Nombre" style="text-align: center;font-family: arial;font-size: 9px;width: 30%" filterBy="#{item.nombres}" filterMatchMode="contains">
+                                <h:outputText value="#{item.nombres}"/>
+                            </p:column>
+                            <p:column headerText="Autor" style="text-align: center;font-family: arial;font-size: 9px;width: 30%" filterBy="#{item.autor}" >
+                                <h:outputText value="#{item.autor}"/>
+                            </p:column>
+                        </p:dataTable>
+                        
+                        <div>
+                            <p:outputLabel value="Identificador de Libro Seleccionado " for="codAlu" style="font-family: arial;font-size: 11px"/>                                                    
+                            <p:inputText size="15" maxlength="15" id="codAlu" value="#{pedidoLibroBean.idLibro}" style="font-family: arial;font-size: 11px"/>                                    
+                        </div>
+                        <!--
+                        <div style="padding-top: 1em">
+                            <p:outputLabel value="Nombre de Libro Seleccionado " for="nomLib" style="font-family: arial;font-size: 11px"/>                                                    
+                            <p:inputText size="15" maxlength="15" id="nomLib" value="#" style="font-family: arial;font-size: 11px"/>                                    
+                        </div>    -->
+                                
+                    </p:panel>
+            <!--    </h:form>
+            
+            <h:form style="padding-top: 3em">-->
+                    <h:panelGrid id="panelbtn" columns="1" cellpadding="0" cellspacing="0" border="0" width="10%">
+                        <p:commandButton rendered="true" value="Registrar" action="#{pedidoLibroBean.addPedidoLibro()}" icon="ui-icon-disk" style="font-family: arial;font-size: 11px;"/>
+                    </h:panelGrid>
+                </h:form>
+        </div>
+        
+    </h:body>
+</html>
+
